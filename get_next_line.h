@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:08:36 by codespace         #+#    #+#             */
-/*   Updated: 2023/11/23 10:08:37 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/27 17:19:55 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <stddef.h>
 # include <stdlib.h>
-# include <stdarg.h>
+# include <unistd.h>
 
-char *get_next_line(int fd);
+//get_next_line_utils.c
+int		ft_strlen(char *str);
+char	*ft_strdup(char *str);
+
+//get_next_line.c
+char	*get_next_line(int fd);
 
 #endif

@@ -3,11 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:08:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/11/23 10:08:34 by codespace        ###   ########.fr       */
+/*   Updated: 2023/11/27 17:35:51 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *get_next_line(int fd);
+#include "get_next_line.h"
+
