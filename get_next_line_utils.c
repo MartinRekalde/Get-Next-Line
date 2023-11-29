@@ -5,39 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 10:08:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/11/27 17:19:29 by mrekalde         ###   ########.fr       */
+/*   Created: 2023/11/28 16:25:45 by mrekalde          #+#    #+#             */
+/*   Updated: 2023/11/28 16:25:47 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *string)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	count;
-
-	count = 0;
-	while (string[count])
-		count++;
-	return (count);
-}
-
-char	*ft_strdup(char *string)
-{
-	int		i;
-	int		size;
-	char	*duplicate;
+	unsigned char	*j;
+	size_t			i;
 
 	i = 0;
-	size = ft_strlen(string);
-	duplicate = malloc(sizeof(char) * (size + 1));
-	if (!duplicate)
-		return (0);
-	while (string[i])
+	j = (unsigned char *)b;
+	while (len > i)
 	{
-		duplicate[i] = string[i];
+		j[i] = (unsigned char)c;
 		i++;
 	}
-	duplicate[i] = '\0';
-	return (duplicate);
+	return (b);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	n;
+	void	*ptr;
+
+	n = count * size;
+	ptr = malloc(n);
+	if (ptr != NULL)
+		ft_memset(ptr, 0, n);
+	return (ptr);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = ft_calloc(sizeof(char), (ft_strlen(s1) + 1));
+	if (!s)
+		return (0);
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	s[ft_strlen(s1)] = 0;
+	return (s);
 }
