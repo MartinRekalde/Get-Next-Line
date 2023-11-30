@@ -6,7 +6,7 @@
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:25:45 by mrekalde          #+#    #+#             */
-/*   Updated: 2023/11/28 16:25:47 by mrekalde         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:07:26 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,4 @@ void	*ft_calloc(size_t count, size_t size)
 	if (ptr != NULL)
 		ft_memset(ptr, 0, n);
 	return (ptr);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*s;
-	int		i;
-
-	i = 0;
-	s = ft_calloc(sizeof(char), (ft_strlen(s1) + 1));
-	if (!s)
-		return (0);
-	while (s1[i])
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	s[ft_strlen(s1)] = 0;
-	return (s);
 }
