@@ -6,7 +6,7 @@
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:25:37 by mrekalde          #+#    #+#             */
-/*   Updated: 2023/12/02 13:51:46 by mrekalde         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:28:16 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*read_from_file(char *basin_buffer, int fd)
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
+		if (bytes_read < 0)
 			return (free(cup_buffer), NULL);
 		cup_buffer[bytes_read] = '\0';
 		basin_buffer = append_buffer(basin_buffer, cup_buffer);
@@ -47,11 +47,13 @@ char	*read_from_file(char *basin_buffer, int fd)
 char	*extract_line(char *basin_buffer)
 {
 	char	*newline_position;
+	char	*newline_position2;
 	char	*line;
 	int		len;
 
 	newline_position = ft_strchr(basin_buffer, '\n');
-	if (newline_position)
+	newline_position2 = ft_strchr(basin_buffer, '\0');
+	if (newline_position || newline_position2)
 	{
 		len = newline_position - basin_buffer;
 		line = malloc(len + 1);
@@ -102,11 +104,13 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!basin_buffer)
 		basin_buffer = malloc(1 * sizeof (char));
-	if (!ft_strchr(basin_buffer, '\n'))
-		basin_buffer = read_from_file(basin_buffer, fd);
 	if (!basin_buffer)
 		return (free(basin_buffer), NULL);
+	if (!ft_strchr(basin_buffer, '\n'))
+		basin_buffer = read_from_file(basin_buffer, fd);
 	line = extract_line(basin_buffer);
+	if (!line)
+		return (NULL);
 	basin_buffer = obtain_remaining(basin_buffer);
 	return (line);
 }
