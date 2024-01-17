@@ -6,7 +6,7 @@
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:50:21 by mrekalde          #+#    #+#             */
-/*   Updated: 2024/01/15 18:51:02 by mrekalde         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:57:47 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*basin_buffer;
-	char		*line;
+	char		*read_content;
+	int			read_bytes;
+	static char	*read_buffer;
 
-	if (fd < 0 || read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
+	read_bytes = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
-	if (!basin_buffer)
-		basin_buffer = malloc(1 * sizeof (char));
-	if (!basin_buffer)
-		return (free(basin_buffer), NULL);
-	if (!ft_strchr(basin_buffer, '\n'))
-		basin_buffer = read_from_file(basin_buffer, fd);
-	line = extract_line(basin_buffer);
-	if (!line)
+	read_content = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!read_content)
 		return (NULL);
-	basin_buffer = obtain_remaining(basin_buffer);
-	return (line);
+	
 }

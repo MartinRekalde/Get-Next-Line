@@ -6,7 +6,7 @@
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:25:45 by mrekalde          #+#    #+#             */
-/*   Updated: 2023/12/02 13:45:23 by mrekalde         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:40:23 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,48 +31,27 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	unsigned int	n;
-	unsigned int	i;
+	char	*dest_start;
 
-	i = 0;
-	n = 0;
-	while (src[n] != '\0')
-		n++;
-	if (dstsize == 0)
-		return (n);
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (n);
+	dest_start = dest;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (dest_start);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strdup(const char *src)
 {
-	size_t	i;
-	size_t	dl;
-	size_t	sl;
+	size_t	len;
+	char	*dest;
 
-	i = 0;
-	dl = ft_strlen(dst);
-	sl = ft_strlen(src);
-	if (dstsize == 0)
-		return (sl);
-	if (dstsize <= dl)
-		return (sl + dstsize);
-	dstsize = dstsize - dl;
-	while (dstsize > 1 && src[i])
-	{
-		dst[dl + i] = src[i];
-		i++;
-		dstsize--;
-	}
-	dst[dl + i] = '\0';
-	return (dl + sl);
+	len = ft_strlen(src);
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	return (ft_strcpy(dest, src));
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

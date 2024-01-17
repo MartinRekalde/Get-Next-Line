@@ -6,7 +6,7 @@
 /*   By: mrekalde <mrekalde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:25:30 by mrekalde          #+#    #+#             */
-/*   Updated: 2023/12/01 17:48:17 by mrekalde         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:39:47 by mrekalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 42
 # endif
 
-# include <stdlib.h>
 # include <unistd.h>
-
-//get_next_line_utils.c
-size_t	ft_strlen(const char *str);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-char	*ft_strjoin(char const *s1, char const *s2);
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <fcntl.h>
+# include <limits.h>
 
 //get_next_line.c
 char	*get_next_line(int fd);
+
+//get_next_line_utils.c
+size_t	ft_strlen(char const *str);
+char	*ft_strchr(char const *s, int c);
+char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strdup(char const *src);
+char	*ft_strjoin(char *s1, const char *s2);
 
 #endif
