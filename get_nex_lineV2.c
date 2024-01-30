@@ -85,6 +85,7 @@ static char	*free_and_null(char *buff1, char *buff2)
 	return (buff2);
 }
 
+// recibe un file descriptor y devuelve la siguiente linea que no se haya leido ya
 char	*get_next_line(int fd)
 {
 	char		*content_read;
