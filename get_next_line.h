@@ -28,10 +28,10 @@
 char	*get_next_line(int fd);
 
 //get_next_line_utils.c
-size_t	ft_strlen(char const *str);
-char	*ft_strchr(char const *s, int c);
-char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strdup(char const *src);
-char	*ft_strjoin(char *s1, const char *s2);
+size_t	ft_strlen(const char *str);
+char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strdup(const char *src);
+char	*ft_strchr(char const *str, int c);
+char	*ft_strjoin(char *buffer, const char *content);
 
 #endif
