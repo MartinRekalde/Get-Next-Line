@@ -31,15 +31,15 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strcpy(char *dest, const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*dest_start;
+	char	*dst_start;
 
-	dest_start = dest;
+	dst_start = dst;
 	while (*src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (dest_start);
+		*dst++ = *src++;
+	*dst = '\0';
+	return (dst_start);
 }
 
 char	*ft_strdup(const char *src)
