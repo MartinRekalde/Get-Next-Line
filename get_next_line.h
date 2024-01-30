@@ -32,6 +32,6 @@ size_t	ft_strlen(char const *str);
 char	*ft_strchr(char const *s, int c);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strdup(char const *src);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, const char *s2);
 
 #endif

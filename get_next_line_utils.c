@@ -54,18 +54,31 @@ char	*ft_strdup(const char *src)
 	return (ft_strcpy(dest, src));
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, const char *s2)
 {
-	char	*m;
-	size_t	len;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*result;
+	char	*result_ptr;
+	char	*src;
 
+	s1_len = 0;
 	if (!s1 && !s2)
-		return (0);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	m = malloc(sizeof(char) * (len));
-	if (!m)
-		return (0);
-	ft_strlcpy(m, s1, len);
-	ft_strlcat(m, s2, len);
-	return ((char *)m);
+		return (NULL);
+	if (s1)
+		s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	result = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!result)
+		return (NULL);
+	result_ptr = result;
+	src = s1;
+	while (src && *src)
+		*result_ptr++ = *src++;
+	src = (char *)s2;
+	while (src && *src)
+		*result_ptr++ = *src++;
+	*result_ptr = '\0';
+	free(s1);
+	return (result);
 }
